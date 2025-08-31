@@ -29,7 +29,7 @@ local function factory(args)
 			volume_now = {
 				volume = math.floor(tonumber(string.match(s, "Volume:%s+(%d*%.?%d+)")) * 100 + 0.5) or "N/A",
 				muted = string.find(s, "%[MUTED%]") and "yes" or "no",
-				device = string.match(s, 'media.name%s-=%s-"(.-)"') or "N/A",
+				device = string.sub(string.match(s, 'node.description%s-=%s-"(.-)"'), 1, 25) or "N/A",
 				id = string.match(s, "id%s+(%d+)") or "N/A",
 			}
 
